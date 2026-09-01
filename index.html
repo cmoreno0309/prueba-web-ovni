@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archivo de Registros — Perú</title>
+<style>
+:root{
+  --fondo:#0F1318; --superficie:#171D24; --superficie-alta:#1F262F;
+  --linea:#28313B; --texto:#E3E0D8; --texto-2:#8B9199;
+  --ambar:#DE9A4C; --ambar-vivo:#F2A93F; --frio:#7BA8BF;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--texto);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input{font:inherit}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ambar-vivo);text-transform:uppercase;margin-bottom:.7rem}
+.mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--texto-2)}
+
+/* cabecera */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem 1.25rem;
+  background:rgba(15,19,24,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--linea);
+}
+.marca{font-family:var(--mono);font-size:13px;letter-spacing:.16em;line-height:1.2;text-align:left}
+.marca b{font-weight:600} .marca i{font-style:normal;color:var(--ambar-vivo)}
+.marca small{display:block;font-size:8.5px;letter-spacing:.18em;color:#6C737C;margin-top:3px}
+.site-header nav{display:none;gap:1.6rem}
+.site-header nav button{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--texto-2)}
+.site-header nav button:hover{color:var(--texto)}
+@media(min-width:760px){ .site-header{padding:1rem 2rem} .site-header nav{display:flex} }
+.site-header.oculta{display:none}
+.barra strong{color:var(--ambar);font-weight:600}
+
+.hero{position:relative;height:82vh;min-height:440px;max-height:660px;overflow:hidden;display:flex;align-items:flex-end}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .figura{position:absolute;right:-6%;bottom:0;height:88%;width:auto;opacity:.5;pointer-events:none}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,var(--fondo) 3%,rgba(15,19,24,.8) 40%,rgba(15,19,24,.25) 100%)}
+.hero-txt{position:relative;padding:0 1.25rem 2.5rem;max-width:34rem}
+.hero-txt h1{font-family:var(--serif);font-size:clamp(2.4rem,10vw,4.2rem);line-height:1.02;font-weight:400;letter-spacing:-.03em;margin-bottom:1rem}
+.hero-txt h1 em{font-style:italic;color:#C8C3B4;display:block}
+.hero-txt p{color:#B6B4AC;font-size:14.5px;margin-bottom:1.5rem;max-width:28rem}
+@media(min-width:900px){
+  .hero-veil{background:linear-gradient(90deg,var(--fondo) 8%,rgba(15,19,24,.82) 42%,rgba(15,19,24,.15) 100%)}
+  .hero{align-items:center}
+  .hero-txt{padding:0 3rem 0 3rem}
+  .hero .figura{right:4%;height:82%;opacity:.55}
+}
+.btn{display:inline-block;background:none;border:1px solid #6E6A5C;color:var(--texto);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 1.2rem;border-radius:0;transition:border-color .15s,color .15s}
+.btn:hover{border-color:var(--ambar-vivo);color:var(--ambar-vivo)}
+.btn.solido{background:var(--ambar);border-color:var(--ambar);color:#171203;font-weight:700}
+.btn.solido:hover{background:var(--ambar-vivo);border-color:var(--ambar-vivo);color:#171203}
+.hero-botones{display:flex;gap:.6rem;flex-wrap:wrap}
+
+.seccion{padding:3.5rem 1.25rem;max-width:66rem;margin:0 auto}
+.cab-seccion{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:.5rem}
+.seccion h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,5vw,2.2rem);letter-spacing:-.02em;line-height:1.1}
+.seccion .sub{color:var(--texto-2);font-size:14px;margin-bottom:1.6rem;max-width:40rem}
+@media(min-width:760px){ .seccion{padding:5rem 2rem} }
+
+.lista-casos{display:grid;grid-template-columns:1fr;gap:.85rem}
+.caso-card{background:var(--superficie);border:1px solid var(--linea);border-top:2px solid var(--ambar-vivo);border-radius:3px;text-align:left;overflow:hidden;width:100%;display:block;transition:border-color .15s}
+.caso-card:hover,.caso-card:focus-visible{border-color:var(--ambar-vivo)}
+.tarjeta{transition:border-color .15s}
+.tarjeta:hover,.tarjeta:focus-visible{border-color:var(--ambar-vivo)}
+.caso-card .marca-fila{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.85rem .95rem .2rem}
+.caso-card .meta{font-family:var(--mono);font-size:10px;color:var(--texto-2);letter-spacing:.08em}
+.marca-pago{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:.28rem .45rem;white-space:nowrap;text-transform:uppercase}
+.marca-pago.pago{background:var(--ambar-vivo);color:#12161B}
+
+.caso-card h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.2;letter-spacing:-.01em;padding:.4rem .95rem 0;margin-bottom:.45rem}
+.caso-card .txt{padding:0 .95rem;font-size:13.5px;color:var(--texto-2);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.caso-card .tira{display:flex;gap:.35rem;padding:.8rem .95rem 0}
+.caso-card .tira .mini{width:40px;height:50px;background:#0B0F14;border:1px solid var(--linea)}
+.caso-card .pie2{display:flex;justify-content:space-between;align-items:center;padding:.85rem .95rem 1rem;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--texto-2)}
+
+.grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.85rem}
+.tarjeta{background:var(--superficie);border:1px solid var(--linea);border-radius:3px;overflow:hidden;text-align:left;width:100%;display:block}
+.tarjeta .lienzo{position:relative;aspect-ratio:3/4;background:#0F141B}
+.tarjeta .lienzo svg{width:100%;height:100%}
+.sello{position:absolute;left:0;bottom:0;background:rgba(11,15,20,.9);border-top:1px solid var(--linea);width:100%;padding:.32rem .5rem;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--texto-2);display:flex;justify-content:space-between;gap:.4rem}
+.marca-caso{position:absolute;top:.4rem;right:.4rem;background:rgba(11,15,20,.9);border:1px solid var(--linea);color:var(--texto-2);font-family:var(--mono);font-size:9.5px;padding:.18rem .38rem}
+.tarjeta .pie{padding:.65rem .7rem .8rem}
+.tarjeta .num{font-family:var(--mono);font-size:9.5px;color:var(--texto-2);letter-spacing:.1em;text-transform:uppercase}
+.tarjeta .nom{font-family:var(--serif);font-size:1.02rem;line-height:1.25;margin:.2rem 0 .5rem}
+
+/* etiquetas: mismo naranja, tres pesos según cuánto respalda el dato */
+.etq{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase;padding:.28rem .45rem;margin:0 .3rem .3rem 0;
+  border:1px solid var(--ambar-vivo);color:var(--ambar-vivo);background:rgba(242,169,63,.09);
+}
+.etq.medio{border-color:rgba(242,169,63,.5);color:#D9944A;background:none}
+.etq.tenue{border-color:var(--linea);color:var(--texto-2);background:none}
+.etiquetas{display:flex;flex-wrap:wrap;margin-top:.1rem}
+
+.buscador{width:100%;background:var(--superficie);border:1px solid var(--linea);border-radius:2px;color:var(--texto);padding:.75rem .85rem;margin-bottom:.7rem;font-size:14px}
+.buscador::placeholder{color:#5F6979}
+.buscador:focus{border-color:var(--ambar-vivo);outline:none}
+.filtros{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.9rem}
+.campo label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--texto-2);text-transform:uppercase;margin-bottom:.3rem}
+.campo select{
+  width:100%;background:var(--superficie);border:1px solid var(--linea);border-radius:2px;
+  color:var(--texto);padding:.6rem 1.8rem .6rem .65rem;font-size:13px;
+  appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--texto-2) 50%),linear-gradient(135deg,var(--texto-2) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+.campo select:focus{border-color:var(--ambar-vivo);outline:none}
+.campo.activo select{border-color:var(--ambar-vivo);color:var(--ambar-vivo)}
+.campo.activo label{color:var(--ambar-vivo)}
+.limpiar{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ambar-vivo);text-transform:uppercase;margin-left:.8rem}
+.conteo{font-size:.8rem;color:var(--texto-2);margin-top:.6rem}
+.vacio{padding:2rem 0;color:var(--texto-2);font-size:.92rem}
+@media(min-width:760px){ .filtros{grid-template-columns:repeat(4,1fr)} }
+
+.vista{display:none} .vista.activa{display:block}
+.volver{
+  position:sticky;top:0;z-index:60;width:100%;text-align:left;
+  background:rgba(19,24,32,.94);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--linea);
+  padding:.85rem 1.25rem;color:var(--texto-2);font-size:.9rem;
+}
+.volver-pie{
+  display:block;width:100%;text-align:center;
+  border:1px solid var(--linea);background:var(--superficie);
+  color:var(--texto-2);padding:.9rem;border-radius:2px;margin-top:2rem;font-size:.92rem;
+}
+
+.ficha-img{position:relative;background:#0F141B;aspect-ratio:1/1;max-height:52vh;overflow:hidden}
+.ficha-img svg{width:100%;height:100%}
+.etiqueta-origen{position:absolute;top:.75rem;left:.75rem;background:rgba(19,24,32,.9);border:1px solid var(--linea);padding:.3rem .55rem;font-size:.68rem}
+.etiqueta-origen.ia{color:var(--texto-2);border-color:var(--linea)}
+.etiqueta-origen.real{color:var(--frio);border-color:#345266}
+.cab{padding:1.25rem 1.25rem .5rem;max-width:44rem;margin:0 auto}
+.cab .num{font-size:.7rem;color:var(--texto-2);letter-spacing:.1em}
+.cab h2{font-family:var(--serif);font-weight:400;font-size:2rem;line-height:1.12;margin:.2rem 0 .55rem}
+.cuerpo{padding:0 1.25rem 3rem;max-width:44rem;margin:0 auto}
+.datos{border-top:1px solid var(--linea);margin-top:1.25rem}
+.dato{display:flex;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--linea);font-size:.92rem}
+.dato dt{color:var(--texto-2);flex:0 0 9.5rem}
+.dato dd{flex:1}
+h3.sec{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin:1.75rem 0 .7rem}
+
+.caso-link{display:block;width:100%;text-align:left;background:var(--superficie);border:1px solid var(--linea);border-left:2px solid var(--ambar-vivo);padding:.8rem .9rem;margin-bottom:.5rem;border-radius:2px}
+.caso-link .m{font-size:.72rem;color:var(--texto-2);letter-spacing:.04em}
+.caso-link .t{font-family:var(--serif);font-size:1.05rem;margin-top:.15rem}
+
+.relato{max-width:38rem}
+.relato p{font-family:var(--serif);font-size:1.05rem;line-height:1.65;margin-bottom:1.1rem}
+.protagonistas{display:flex;gap:.6rem;overflow-x:auto;padding:.2rem 0 1rem}
+.prot{flex:0 0 108px;background:var(--superficie);border:1px solid var(--linea);border-radius:3px;text-align:left;overflow:hidden}
+.prot .l{aspect-ratio:3/4;background:#0F141B}
+.prot .l svg{width:100%;height:100%}
+.prot .n{padding:.4rem .45rem .55rem;font-size:.78rem;line-height:1.25}
+.prot .r{font-size:.6rem;color:var(--texto-2);display:block;margin-top:.15rem}
+
+.material{margin-top:2.25rem;background:var(--superficie);border:1px solid var(--linea);border-top:2px solid var(--ambar-vivo);padding:1.2rem 1.15rem}
+.material h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:.35rem}
+.material .aclara{color:var(--texto-2);font-size:.88rem;margin-bottom:.9rem}
+.material ul{list-style:none;margin-bottom:1.1rem}
+.material li{padding:.35rem 0;border-bottom:1px solid var(--linea);font-size:.92rem;display:flex;gap:.6rem}
+.material li span{color:var(--ambar-vivo);flex:0 0 auto}
+.material .fila-pago{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.material .precio{font-size:1.35rem;font-weight:700;color:var(--ambar-vivo)}
+.nota-acceso{margin-top:.9rem;font-size:.8rem;color:var(--texto-2);line-height:1.5}
+
+/* material desbloqueado */
+.material.desbloqueado{border-top-color:#4A5F3E}
+.cinta{display:flex;gap:.75rem;align-items:center;margin-bottom:1rem}
+.cinta .llave{flex:0 0 30px;height:30px;border-radius:50%;background:#2E4028;color:#A3C48A;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.cinta b{display:block;font-size:1rem}
+.cinta span:not(.llave){font-size:.8rem;color:var(--texto-2)}
+.archivos{list-style:none}
+.archivos li{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.7rem 0;border-bottom:1px solid var(--linea);font-size:.92rem}
+.archivos li em{font-style:normal;color:var(--ambar-vivo);font-size:.85rem;white-space:nowrap}
+
+/* pestañas del material */
+.pestanas{display:flex;gap:.4rem;margin-bottom:1rem;border-bottom:1px solid var(--linea)}
+.pestanas button{padding:.6rem .3rem;margin-bottom:-1px;color:var(--texto-2);font-size:.9rem;border-bottom:2px solid transparent;margin-right:1rem}
+.pestanas button[aria-selected="true"]{color:var(--ambar-vivo);border-bottom-color:var(--ambar-vivo);font-weight:600}
+
+/* reproductor fijo */
+.reproductor{position:sticky;top:3.2rem;z-index:40;display:flex;gap:.8rem;align-items:center;background:var(--superficie-alta);border:1px solid var(--linea);border-radius:3px;padding:.7rem .8rem}
+.play{flex:0 0 40px;height:40px;border-radius:50%;background:var(--ambar-vivo);color:#141821;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.pista-audio{flex:1;min-width:0}
+.lin{height:5px;background:var(--linea);border-radius:3px;cursor:pointer;position:relative;margin-bottom:.35rem}
+.lin span{display:block;height:100%;background:var(--ambar-vivo);border-radius:3px;width:0}
+.tiempos{display:flex;justify-content:space-between;font-size:.7rem;color:var(--texto-2)}
+.etq-audio{font-size:.75rem;color:var(--texto-2);margin:.5rem 0 1rem}
+
+/* navegación por secciones */
+.secciones{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:.5rem}
+.secciones::-webkit-scrollbar{display:none}
+.secciones button{white-space:nowrap;border:1px solid var(--linea);background:var(--fondo);color:var(--texto-2);padding:.35rem .65rem;border-radius:2px;font-size:.78rem}
+.secciones button[aria-current="true"]{border-color:var(--ambar-vivo);color:var(--ambar-vivo);background:rgba(242,169,63,.1)}
+
+/* transcripción */
+.transcripcion h4{font-family:var(--serif);font-weight:400;font-size:1.05rem;color:var(--texto-2);margin:1.4rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--linea)}
+.bloque{display:block;width:100%;text-align:left;padding:.6rem .7rem;border-left:2px solid transparent;border-radius:2px;margin-bottom:.2rem}
+.bloque .quien{font-size:.7rem;color:var(--texto-2);letter-spacing:.04em;display:flex;justify-content:space-between;gap:.5rem;margin-bottom:.2rem}
+.bloque .quien i{font-style:normal;color:#5F6979}
+.bloque p{font-family:var(--serif);font-size:1rem;line-height:1.6}
+.bloque.testigo p{color:var(--texto)}
+.bloque.investigador p{color:var(--texto-2);font-size:.95rem}
+.bloque.sonando{background:rgba(242,169,63,.11);border-left-color:var(--ambar-vivo)}
+
+/* fotos */
+.rejilla-fotos{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.foto-cel{background:var(--fondo);border:1px solid var(--linea);border-radius:3px;overflow:hidden;text-align:left}
+.foto-cel .lz{aspect-ratio:4/3;background:#0F141B}
+.foto-cel .lz svg{width:100%;height:100%}
+.foto-cel .nb{padding:.5rem .55rem .65rem;font-size:.78rem;line-height:1.3}
+
+/* visor */
+.capa.visor{align-items:center}
+.visor-caja{position:relative;background:var(--superficie);border:1px solid var(--linea);border-radius:4px;width:100%;max-width:32rem;padding:2.2rem 1rem 1rem}
+.visor-caja #vLienzo{background:#0F141B;border:1px solid var(--linea);aspect-ratio:4/3;margin-bottom:.8rem}
+.visor-caja #vLienzo svg{width:100%;height:100%}
+.v-nombre{font-family:var(--serif);font-size:1.1rem}
+.v-nota{font-size:.82rem;color:var(--texto-2);margin-bottom:.9rem}
+.v-nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--linea);padding-top:.8rem;font-size:.85rem;color:var(--texto-2)}
+.v-nav button{color:var(--ambar)}
+.v-nav button:disabled{color:#4A5361}
+
+/* modal de pago */
+.capa{position:fixed;inset:0;z-index:100;background:rgba(10,13,18,.82);display:flex;align-items:flex-end;justify-content:center;padding:1rem}
+.capa[hidden]{display:none}
+.panel[hidden]{display:none}
+.reproductor[hidden]{display:none}
+.modal{position:relative;background:var(--superficie);border:1px solid var(--linea);border-top:2px solid var(--ambar-vivo);border-radius:4px;width:100%;max-width:26rem;padding:1.5rem 1.25rem 1.35rem;max-height:92vh;overflow-y:auto}
+.cerrar-modal{position:absolute;top:.6rem;right:.7rem;color:var(--texto-2);font-size:1.1rem;padding:.3rem}
+.modal .paso{font-size:.7rem;color:var(--texto-2);letter-spacing:.08em;margin-bottom:.3rem}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin-bottom:.5rem;line-height:1.2}
+.modal .aclara{font-size:.88rem;color:var(--texto-2);margin-bottom:1rem}
+.modal input{width:100%;background:var(--fondo);border:1px solid var(--linea);color:var(--texto);padding:.75rem .85rem;border-radius:2px;margin-bottom:.9rem}
+.metodos{display:flex;gap:.5rem;margin-bottom:1.1rem}
+.metodo{flex:1;border:1px solid var(--linea);background:var(--fondo);color:var(--texto-2);padding:.7rem;border-radius:2px;font-size:.9rem}
+.metodo[aria-pressed="true"]{border-color:var(--ambar-vivo);color:var(--ambar-vivo);background:rgba(242,169,63,.1);font-weight:600}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:.7rem 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-bottom:1.1rem;font-size:.9rem;color:var(--texto-2)}
+.total b{font-size:1.3rem;color:var(--ambar-vivo)}
+.btn.ancho{display:block;width:100%;text-align:center}
+.modal .chico{font-size:.75rem;color:var(--texto-2);text-align:center;margin-top:.7rem}
+.sobre{background:var(--fondo);border:1px solid var(--linea);padding:.9rem;margin-bottom:1.1rem}
+.sobre .de{font-size:.72rem;color:var(--texto-2)}
+.sobre .asunto{font-weight:600;margin:.2rem 0 .5rem;font-size:.95rem}
+.sobre .cuerpo-mail{font-size:.85rem;color:var(--texto-2);margin-bottom:.7rem}
+.sobre .enlace{display:block;font-size:.72rem;color:var(--frio);word-break:break-all;background:var(--superficie);border:1px solid var(--linea);padding:.5rem}
+@media(min-width:640px){ .capa{align-items:center} }
+
+.correo{background:var(--superficie);border:1px solid var(--linea);padding:1.35rem 1.15rem;margin-top:2.5rem}
+.correo h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin-bottom:.5rem}
+.correo p{color:var(--texto-2);font-size:.9rem;margin-bottom:.9rem}
+.correo-fila{display:flex;gap:.5rem}
+.correo-fila input{flex:1;min-width:0;background:var(--fondo);border:1px solid var(--linea);color:var(--texto);padding:.7rem .8rem;border-radius:2px}
+.ok{color:#A3C48A;font-size:.9rem}
+
+.autor{display:flex;gap:1rem;align-items:flex-start}
+.autor .foto{flex:0 0 72px;height:72px;border-radius:50%;background:var(--superficie-alta);border:1px solid var(--linea);display:flex;align-items:center;justify-content:center;color:var(--texto-2);font-size:.7rem;text-align:center;line-height:1.2}
+.autor p{color:var(--texto-2);font-size:.93rem}
+
+.pie-web{border-top:1px solid var(--linea);padding:2rem 1.25rem 3rem;color:var(--texto-2);font-size:.82rem;max-width:62rem;margin:0 auto}
+.pie-web h4{color:var(--texto);font-size:.85rem;margin-bottom:.5rem;font-weight:600}
+.pie-web ul{list-style:none;margin:.5rem 0 1.2rem}
+.pie-web li{padding:.15rem 0}
+.pie-web .k{color:var(--ambar)} .pie-web .k2{color:var(--frio)}
+
+@media(min-width:640px){ .grilla{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem} .dato dt{flex:0 0 11rem} .lista-casos{grid-template-columns:1fr 1fr} }
+:focus-visible{outline:2px solid var(--ambar-vivo);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="barraTop">
+  <button class="marca" onclick="cerrar()">
+    <b>ARCHIVO</b> <i>OVNI</i>
+    <small>PERÚ · REGISTRO DESDE 1998</small>
+  </button>
+  <nav>
+    <button onclick="ir('casos')">Casos</button>
+    <button onclick="ir('catalogo')">Entidades y objetos</button>
+    <button onclick="ir('metodo')">Sobre el archivo</button>
+  </nav>
+</header>
+
+<!-- ================= PORTADA ================= -->
+<div class="vista activa" id="vPortada">
+  <header class="hero">
+    <canvas id="heroLienzo"></canvas>
+    <div class="figura" id="heroFigura"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-txt">
+      <p class="eyebrow">Archivo documental · Perú</p>
+      <h1>Lo que dijeron<em>haber visto</em></h1>
+      <p>Casos recogidos de boca de los testigos, con las entidades y objetos que describieron. Veintisiete años de trabajo de campo.</p>
+      <div class="hero-botones">
+        <button class="btn solido" onclick="ir('casos')">Ver casos</button>
+        <button class="btn" onclick="ir('catalogo')">Catálogo</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="seccion" id="secCasos" style="padding-bottom:1rem">
+    <div class="cab-seccion"><h2>Casos</h2><span class="mono" id="contCasos"></span></div>
+    <p class="sub">Cada caso es un avistamiento: quién, cuándo, dónde y qué apareció. Todos los relatos son de lectura libre. En algunos, además, se ofrece aparte el material de campo recogido en la investigación.</p>
+    <div class="lista-casos" id="filaCasos"></div>
+  </section>
+
+  <section class="seccion" id="secCatalogo">
+    <div class="cab-seccion"><h2>Entidades y objetos</h2><span class="mono" id="conteo"></span></div>
+    <p class="sub">Las entidades y objetos descritos, fichados uno por uno. Cada ficha indica de dónde sale la imagen y en qué casos aparece.</p>
+    <input class="buscador" id="q" type="search" placeholder="Buscar por nombre o región" oninput="pintarCatalogo()">
+    <div class="filtros" id="filtros"></div>
+    <p class="conteo"><span id="conteoTexto"></span><button class="limpiar" id="btnLimpiar" onclick="limpiarFiltros()" hidden>Limpiar filtros</button></p>
+    <div class="grilla" id="grilla" style="margin-top:1rem"></div>
+    <p class="vacio" id="vacio" hidden>No hay entradas con esos filtros.</p>
+  </section>
+
+  <section class="seccion" id="secMetodo">
+    <p class="eyebrow">Sobre el archivo</p>
+    <h2>Quién reunió esto</h2>
+    <div class="autor">
+      <div class="foto">foto<br>pendiente</div>
+      <p>Nombre del investigador. Empezó a recoger testimonios en 1998, después de un avistamiento en la carretera a Chiclayo. Desde entonces ha entrevistado a más de doscientos testigos en la costa y la sierra norte. Las reconstrucciones visuales de este archivo se elaboraron a partir de esas descripciones.</p>
+    </div>
+    <div class="correo">
+      <h3>Recibe los casos nuevos</h3>
+      <p>Un correo cuando se publica un caso. Nada más.</p>
+      <div class="correo-fila">
+        <input type="email" id="mail1" placeholder="tu correo" aria-label="Tu correo">
+        <button class="btn solido" onclick="suscribir('mail1','ok1')">Avísenme</button>
+      </div>
+      <p class="ok" id="ok1" hidden>Listo. Te escribimos cuando salga el próximo.</p>
+    </div>
+  </section>
+
+  <footer class="pie-web">
+    <h4>Nota metodológica</h4>
+    <p>Este archivo distingue dos cosas que suelen mezclarse: qué tan documentado está un caso, y de dónde sale la imagen que lo acompaña.</p>
+    <ul>
+      <li><span class="k">Reconstrucción visual</span> — imagen generada a partir de la descripción del testigo. No es una fotografía.</li>
+      <li><span class="k2">Registro original</span> — fotografía o filmación aportada por el testigo o recogida en campo.</li>
+      <li>Caso documentado — hay entrevista, fecha, lugar y al menos una fuente verificable.</li>
+      <li>Testimonio — relato directo de un testigo, sin corroboración externa.</li>
+      <li>Referencia — mención en otra fuente, sin acceso al testigo.</li>
+    </ul>
+    <p>Prototipo con datos ficticios · <span id="anio"></span></p>
+  </footer>
+</div>
+
+<!-- ================= CASO ================= -->
+<div class="vista" id="vCaso">
+  <button class="volver" onclick="cerrar()">← Volver a los casos</button>
+  <div class="cab">
+    <p class="num" id="cNum"></p>
+    <h2 id="cTit"></h2>
+    <span id="cEv"></span>
+  </div>
+  <div class="cuerpo">
+    <dl class="datos" id="cDatos"></dl>
+    <h3 class="sec">Qué apareció</h3>
+    <div class="protagonistas" id="cProt"></div>
+    <h3 class="sec">El relato</h3>
+    <div class="relato" id="cRelato"></div>
+    <!-- ESTADO A: cerrado -->
+    <div class="material" id="cMaterial" hidden>
+      <h3>Material de campo</h3>
+      <p class="aclara">El relato de arriba es completo y libre. Lo que sigue es el archivo original recogido durante la investigación.</p>
+      <ul id="cIncluye"></ul>
+      <div class="fila-pago">
+        <span class="precio" id="cPrecio"></span>
+        <button class="btn solido" onclick="abrirPago()">Acceder al material</button>
+      </div>
+      <p class="nota-acceso">Pagas una vez y el acceso queda asociado a tu correo. Puedes volver a entrar cuando quieras.</p>
+    </div>
+
+    <!-- ESTADO B: material desbloqueado -->
+    <div class="material desbloqueado" id="cDesbloqueado" hidden>
+      <div class="cinta">
+        <span class="llave">✓</span>
+        <div>
+          <b>Material desbloqueado</b>
+          <span id="dCorreo"></span>
+        </div>
+      </div>
+
+      <div class="pestanas" id="dPestanas"></div>
+
+      <!-- entrevista -->
+      <div class="panel" id="panelEntrevista">
+        <div class="reproductor" id="reproductor">
+          <button class="play" id="btnPlay" onclick="alternarAudio()" aria-label="Reproducir">▶</button>
+          <div class="pista-audio">
+            <div class="lin" id="linAudio" onclick="saltarAudio(event)"><span id="avance"></span></div>
+            <div class="tiempos"><span id="tActual">0:00</span><span id="tTotal">0:00</span></div>
+          </div>
+        </div>
+        <p class="etq-audio" id="etqAudio"></p>
+        <nav class="secciones" id="dSecciones"></nav>
+        <div class="transcripcion" id="dTranscripcion"></div>
+      </div>
+
+      <!-- imágenes -->
+      <div class="panel" id="panelFotos" hidden>
+        <div class="rejilla-fotos" id="dFotos"></div>
+      </div>
+
+      <p class="nota-acceso">Guarda el correo que te enviamos: ese enlace vuelve a abrir esta página las veces que quieras.</p>
+    </div>
+
+    <!-- visor de imagen -->
+    <div class="capa visor" id="capaVisor" hidden onclick="cerrarVisor()">
+      <div class="visor-caja" onclick="event.stopPropagation()">
+        <button class="cerrar-modal" onclick="cerrarVisor()" aria-label="Cerrar">✕</button>
+        <div id="vLienzo"></div>
+        <p class="v-nombre" id="vNombre"></p>
+        <p class="v-nota" id="vNota"></p>
+        <div class="v-nav">
+          <button onclick="moverVisor(-1)">← Anterior</button>
+          <span id="vPos"></span>
+          <button onclick="moverVisor(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+    <div class="correo">
+      <h3>Sigue este archivo</h3>
+      <p>Te avisamos cuando se publique el próximo caso.</p>
+      <div class="correo-fila">
+        <input type="email" id="mail3" placeholder="tu correo" aria-label="Tu correo">
+        <button class="btn solido" onclick="suscribir('mail3','ok3')">Avísenme</button>
+      </div>
+      <p class="ok" id="ok3" hidden>Listo, quedaste en la lista.</p>
+    </div>
+    <button class="volver-pie" onclick="cerrar()">← Volver a los casos</button>
+  </div>
+</div>
+
+<!-- ================= FICHA DE CATÁLOGO ================= -->
+<div class="vista" id="vFicha">
+  <button class="volver" id="fVolver" onclick="cerrar()">← Volver</button>
+  <div class="ficha-img" id="fImg"></div>
+  <div class="cab">
+    <p class="num" id="fNum"></p>
+    <h2 id="fNom"></h2>
+    <span id="fEv"></span>
+  </div>
+  <div class="cuerpo">
+    <dl class="datos" id="fDatos"></dl>
+    <div id="fCasosBloque" hidden>
+      <h3 class="sec">Aparece en estos casos</h3>
+      <div id="fCasos"></div>
+    </div>
+    <div class="correo">
+      <h3>Sigue este archivo</h3>
+      <p>Te avisamos cuando se publique un caso nuevo con esta entrada.</p>
+      <div class="correo-fila">
+        <input type="email" id="mail2" placeholder="tu correo" aria-label="Tu correo">
+        <button class="btn solido" onclick="suscribir('mail2','ok2')">Avísenme</button>
+      </div>
+      <p class="ok" id="ok2" hidden>Listo, quedaste en la lista.</p>
+    </div>
+    <button class="volver-pie" id="fVolverPie" onclick="cerrar()">← Volver</button>
+  </div>
+</div>
+
+<!-- ================= PAGO (simulado) ================= -->
+<div class="capa" id="capaPago" hidden>
+  <div class="modal">
+    <button class="cerrar-modal" onclick="cerrarPago()" aria-label="Cerrar">✕</button>
+
+    <div id="pasoCorreo">
+      <p class="paso">Paso 1 de 2</p>
+      <h3 id="pTitulo"></h3>
+      <p class="aclara">Te enviaremos el enlace de acceso a este correo. No se crea ninguna cuenta ni contraseña.</p>
+      <input type="email" id="pCorreo" placeholder="tu@correo.com" aria-label="Tu correo">
+      <div class="metodos">
+        <button class="metodo" data-m="yape" onclick="elegirMetodo('yape')" aria-pressed="true">Yape</button>
+        <button class="metodo" data-m="tarjeta" onclick="elegirMetodo('tarjeta')" aria-pressed="false">Tarjeta</button>
+      </div>
+      <div class="total"><span>Total</span><b id="pPrecio"></b></div>
+      <button class="btn solido ancho" onclick="pagar()">Pagar y recibir el enlace</button>
+      <p class="chico">Prototipo: no se cobra nada real.</p>
+    </div>
+
+    <div id="pasoListo" hidden>
+      <p class="paso">Paso 2 de 2</p>
+      <h3>Listo</h3>
+      <p class="aclara">Enviamos el enlace de acceso a <b id="lCorreo"></b>. Así se ve el correo:</p>
+      <div class="sobre">
+        <p class="de">Archivo de investigación</p>
+        <p class="asunto" id="lAsunto"></p>
+        <p class="cuerpo-mail">Tu acceso al material de campo está listo. Este enlace no vence: guárdalo y ábrelo cuando quieras.</p>
+        <code class="enlace" id="lEnlace"></code>
+      </div>
+      <button class="btn solido ancho" onclick="usarEnlace()">Abrir el enlace</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ DATOS (ficticios) ============
+   CATALOGO = fichas de entidades y objetos.
+   CASOS    = los avistamientos. Aquí vive el relato.
+=========================================== */
+
+const CATALOGO = [
+  { id:"ENT-001", nombre:"El alto de Marcahuasi", tipo:"entidad", nivel_evidencia:"caso_documentado",
+    origen_visual:"reconstruccion_ia", forma:"alargada", origen:"no determinado", altura:"2.4 m aprox.",
+    descripcion_fisica:"Extremidades largas, cabeza alargada hacia atrás, sin rasgos faciales visibles según el testigo.",
+    region:"Lima" },
+  { id:"OBJ-004", nombre:"Disco de Marcahuasi", tipo:"objeto", nivel_evidencia:"caso_documentado",
+    origen_visual:"registro_original", forma:"disco",
+    descripcion_fisica:"Objeto discoidal, borde inferior luminoso continuo, sin sonido audible.", region:"Lima" },
+  { id:"ENT-002", nombre:"Los pequeños de Otuzco", tipo:"entidad", nivel_evidencia:"testimonio",
+    origen_visual:"reconstruccion_ia", forma:"baja",
+    origen:"según fuente anónima, un cuerpo del cinturón exterior", altura:"1.1 m",
+    descripcion_fisica:"Tres figuras de baja estatura, piel de aspecto mate, movimiento descrito como sincronizado.",
+    region:"La Libertad" },
+  { id:"ENT-007", nombre:"La figura del arenal", tipo:"entidad", nivel_evidencia:"caso_documentado",
+    origen_visual:"reconstruccion_ia", forma:"alargada", origen:"no determinado", altura:"2.1 m",
+    descripcion_fisica:"Silueta delgada, sin cuello aparente. Dos testigos independientes coincidieron en la proporción.",
+    region:"Lima" },
+  { id:"OBJ-009", nombre:"Luces de Paracas", tipo:"objeto", nivel_evidencia:"referencia",
+    origen_visual:"archivo_historico", forma:"luces",
+    descripcion_fisica:"Formación de tres luces en triángulo, reportada por pescadores.", region:"Ica" },
+  { id:"ENT-011", nombre:"El visitante de Chulucanas", tipo:"entidad", nivel_evidencia:"testimonio",
+    origen_visual:"reconstruccion_ia", forma:"ancha", origen:"no determinado", altura:"1.6 m",
+    descripcion_fisica:"Complexión ancha, cabeza sin cuello visible.", region:"Piura" },
+  { id:"OBJ-012", nombre:"Objeto de Piura", tipo:"objeto", nivel_evidencia:"testimonio",
+    origen_visual:"reconstruccion_ia", forma:"ovoide",
+    descripcion_fisica:"Objeto ovoide, superficie descrita como opaca.", region:"Piura" },
+  { id:"ENT-015", nombre:"La sombra de Cajamarca", tipo:"entidad", nivel_evidencia:"referencia",
+    origen_visual:"reconstruccion_ia", forma:"alargada",
+    descripcion_fisica:"Mención recogida de tradición oral, sin testigo localizado.", region:"Cajamarca" },
+  { id:"OBJ-018", nombre:"Formación de Nasca", tipo:"objeto", nivel_evidencia:"caso_documentado",
+    origen_visual:"registro_original", forma:"luces",
+    descripcion_fisica:"Cinco puntos luminosos en desplazamiento coordinado, filmados desde tierra.", region:"Ica" },
+  { id:"ENT-021", nombre:"El de los ojos hundidos", tipo:"entidad", nivel_evidencia:"testimonio",
+    origen_visual:"reconstruccion_ia", forma:"baja", origen:"no determinado",
+    descripcion_fisica:"Rostro descrito con cuencas profundas. El testigo no precisó estatura.", region:"Junín" }
+];
+
+const CASOS = [
+  { id:"CASO-03", titulo:"La noche del 14 de julio",
+    fecha:"14 de julio de 1996", lugar:"Meseta de Marcahuasi", region:"Lima",
+    nivel_evidencia:"caso_documentado", testigo:"Pastor de la zona, 54 años al momento de los hechos",
+    fuente:"Entrevista registrada en 2003; negativo fotográfico conservado",
+    entradas:["ENT-001","OBJ-004"],
+    relato:[
+      "Dijo que primero se apagaron los perros. No ladraron: se callaron todos a la vez, y eso fue lo que le hizo salir de la choza.",
+      "La luz venía de detrás del cerro y no proyectaba sombra. Eso es lo que repite cada vez que cuenta la historia, que la luz no hacía sombra. Cuando la figura se irguió del otro lado del corral, calculó que le pasaba dos cabezas al portón, que mide metro ochenta.",
+      "Se quedó quieto casi veinte minutos. Dice que no sintió miedo sino una especie de sueño pesado, y que cuando el objeto se fue, el ruido de los grillos volvió de golpe, como si alguien hubiera subido el volumen.",
+      "Al día siguiente encontró el pasto aplastado en un círculo irregular de unos seis metros. Fotografió el lugar con una cámara prestada. Ese negativo es la única imagen original que conserva el archivo de este caso."
+    ],
+    material:{ precio:"S/ 15",
+      incluye:["Transcripción completa de la entrevista, 18 páginas","4 fotografías del lugar, incluida la del pasto aplastado","22 minutos de audio original","Croquis del terreno hecho por el testigo"],
+      audio:{ duracion:1320, etiqueta:"Entrevista en su casa, marzo de 2003" },
+      transcripcion:[
+        { seccion:"La noche", bloques:[
+          { t:0,   quien:"Investigador", txt:"Cuénteme desde el principio. ¿Qué estaba haciendo esa noche?" },
+          { t:14,  quien:"Testigo", txt:"Estaba adentro, ya para acostarme. Los perros eran cuatro en ese tiempo. Y de repente ya no se oía nada." },
+          { t:41,  quien:"Investigador", txt:"¿No ladraron?" },
+          { t:46,  quien:"Testigo", txt:"No, señor. Se callaron. Todos juntos. Por eso salí, porque eso nunca pasa." }
+        ]},
+        { seccion:"La luz", bloques:[
+          { t:88,  quien:"Testigo", txt:"La claridad venía de atrás del cerro. Alumbraba, pero yo no hacía sombra. Eso es lo que no me sale de la cabeza." },
+          { t:127, quien:"Investigador", txt:"¿Está seguro de eso? ¿No había sombra en el suelo?" },
+          { t:134, quien:"Testigo", txt:"Miré mis pies. No había. Con luna sí hay sombra, con lámpara también. Esa vez no." }
+        ]},
+        { seccion:"La figura", bloques:[
+          { t:196, quien:"Testigo", txt:"Se levantó del otro lado del corral. El portón mío mide metro ochenta, y le pasaba dos cabezas." },
+          { t:231, quien:"Investigador", txt:"¿Le vio la cara?" },
+          { t:236, quien:"Testigo", txt:"No tenía. O yo no le vi. Era como si estuviera de espaldas siempre." },
+          { t:268, quien:"Testigo", txt:"No sentí miedo. Sentí sueño, un sueño pesado, como cuando uno ha trabajado todo el día." }
+        ]},
+        { seccion:"El día siguiente", bloques:[
+          { t:340, quien:"Testigo", txt:"En la mañana fui a ver. El pasto estaba echado en redondo, como seis metros, pero no parejo." },
+          { t:389, quien:"Investigador", txt:"¿Y la fotografía?" },
+          { t:394, quien:"Testigo", txt:"Le pedí prestada la cámara a mi compadre. Saqué cuatro. Esa del pasto es la que salió mejor." }
+        ]}
+      ],
+      fotos:[
+        { nombre:"El corral desde la casa", nota:"Tomada la mañana del 15 de julio de 1996", forma:"paisaje" },
+        { nombre:"El pasto aplastado", nota:"Círculo irregular de unos seis metros", forma:"circulo" },
+        { nombre:"Vista hacia el cerro", nota:"Dirección desde donde venía la luz", forma:"cerro" },
+        { nombre:"Croquis del terreno", nota:"Dibujado por el testigo durante la entrevista", forma:"croquis" }
+      ] } },
+
+  { id:"CASO-07", titulo:"Dos testigos, siete años aparte",
+    fecha:"marzo de 2004", lugar:"Arenales de Chilca", region:"Lima",
+    nivel_evidencia:"caso_documentado", testigo:"Dos testigos independientes, entrevistados en 2004 y 2011",
+    fuente:"Dos entrevistas separadas, sin contacto entre los testigos",
+    entradas:["ENT-007"],
+    relato:[
+      "Lo que hace interesante este caso no es lo que vieron sino cuándo lo contaron.",
+      "El primer testigo declaró en abril de 2004. El segundo apareció en 2011, no sabía del primero, vivía a cuarenta kilómetros, y describió la misma proporción: la cabeza pequeña respecto al cuerpo, los brazos que le llegaban abajo de la rodilla. Ninguno mencionó rasgos en la cara.",
+      "Cuando se les mostró por separado el mismo juego de siluetas, ambos señalaron la misma. Es el único caso del archivo donde eso ocurrió."
+    ],
+    material:{ precio:"S/ 15",
+      incluye:["Transcripción de ambas entrevistas, 24 páginas","Mapa con las dos ubicaciones","El juego de siluetas usado en la prueba","Notas de campo de las dos visitas"] } },
+
+  { id:"CASO-11", titulo:"El corral de Chulucanas",
+    fecha:"noviembre de 2003", lugar:"Chulucanas", region:"Piura",
+    nivel_evidencia:"testimonio", testigo:"Familia de agricultores, tres personas",
+    entradas:["ENT-011","OBJ-012"],
+    relato:[
+      "La familia estaba cenando cuando el hijo menor avisó que había luz en el corral. Salieron los tres.",
+      "Describen un objeto ovoide posado a unos treinta metros y una figura ancha de pie junto a él. No hubo sonido. El padre dice que la figura giró el torso completo hacia ellos, sin mover los pies, y que ahí entraron a la casa.",
+      "No hay fotografías ni marcas en el terreno. El caso se conserva por la coincidencia entre los tres relatos, tomados por separado el mismo día."
+    ] },
+
+  { id:"CASO-14", titulo:"Sobrevuelo de Nasca",
+    fecha:"agosto de 2012", lugar:"Sobre las líneas de Nasca", region:"Ica",
+    nivel_evidencia:"caso_documentado", testigo:"Operador turístico y siete pasajeros",
+    fuente:"Filmación de 3 minutos aportada por el operador",
+    entradas:["OBJ-018"],
+    relato:[
+      "El vuelo turístico había terminado el circuito y volvía al aeródromo cuando el piloto notó cinco puntos luminosos manteniendo formación a mayor altura.",
+      "La filmación dura tres minutos y ocho segundos. Los puntos conservan la distancia entre sí durante todo el registro y luego salen de cuadro hacia el oeste.",
+      "Es el material visual de mejor calidad que tiene el archivo, y el único con más de un testigo en el mismo lugar."
+    ],
+    material:{ precio:"S/ 15",
+      incluye:["La filmación completa, 3:08 min","Declaración firmada del piloto","Testimonios de cuatro pasajeros","Datos de vuelo de esa tarde"] } }
+];
+
+/* ============ SILUETAS ============ */
+function silueta(it,alto){
+  if(!it) return "";
+  const c = it.origen_visual==="registro_original" ? "#6FA8C7" : "#D4A63C";
+  const semilla = (it.id||"X").split("").reduce((a,b)=>a+b.charCodeAt(0),0);
+  let cuerpo="";
+  switch(it.forma){
+    case "alargada": cuerpo=`<ellipse cx="100" cy="52" rx="17" ry="26"/><path d="M100 78 C86 96 82 132 86 176 L114 176 C118 132 114 96 100 78Z"/><path d="M87 92 C72 112 68 148 70 172" stroke-width="7" fill="none"/><path d="M113 92 C128 112 132 148 130 172" stroke-width="7" fill="none"/>`; break;
+    case "baja": cuerpo=`<ellipse cx="100" cy="76" rx="27" ry="24"/><path d="M100 100 C84 112 80 142 84 172 L116 172 C120 142 116 112 100 100Z"/><path d="M80 112 C68 126 66 150 68 168" stroke-width="7" fill="none"/><path d="M120 112 C132 126 134 150 132 168" stroke-width="7" fill="none"/>`; break;
+    case "ancha": cuerpo=`<ellipse cx="100" cy="62" rx="25" ry="22"/><path d="M100 84 C74 96 68 138 74 176 L126 176 C132 138 126 96 100 84Z"/>`; break;
+    case "disco": cuerpo=`<ellipse cx="100" cy="118" rx="66" ry="17"/><path d="M56 114 C64 92 136 92 144 114Z"/><ellipse cx="100" cy="140" rx="30" ry="8" opacity=".55"/>`; break;
+    case "ovoide": cuerpo=`<ellipse cx="100" cy="118" rx="38" ry="50"/><ellipse cx="100" cy="118" rx="20" ry="30" opacity=".35"/>`; break;
+    default: cuerpo=`<circle cx="70" cy="126" r="9"/><circle cx="100" cy="108" r="11"/><circle cx="130" cy="128" r="8"/><circle cx="85" cy="146" r="6" opacity=".6"/><circle cx="118" cy="148" r="6" opacity=".6"/>`;
+  }
+  const H=alto||220;
+  return `<svg viewBox="0 0 200 ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Silueta de ${it.nombre||""}">
+    <defs><radialGradient id="g${semilla}_${H}" cx="50%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="${c}" stop-opacity=".16"/><stop offset="100%" stop-color="${c}" stop-opacity="0"/>
+    </radialGradient></defs>
+    <rect width="200" height="${H}" fill="url(#g${semilla}_${H})"/>
+    <g fill="${c}" fill-opacity=".55" stroke="${c}" stroke-opacity=".55" transform="translate(0,${(H-220)/2})">${cuerpo}</g></svg>`;
+}
+
+/* ============ HELPERS ============ */
+const ETQ_EV={caso_documentado:"Caso documentado",testimonio:"Testimonio",referencia:"Referencia"};
+const ETQ_OR={reconstruccion_ia:"Reconstrucción visual",registro_original:"Registro original",archivo_historico:"Archivo histórico"};
+const CLS_EV={caso_documentado:"",testimonio:"medio",referencia:"tenue"};
+const CLS_OR={registro_original:"",archivo_historico:"medio",reconstruccion_ia:"tenue"};
+const ETQ_OR_CORTA={reconstruccion_ia:"Reconstrucción con IA",registro_original:"Fotografía real",archivo_historico:"Archivo histórico"};
+function etqEv(v){ return `<span class="etq ${CLS_EV[v]}">${ETQ_EV[v]}</span>`; }
+function etqOr(v){ return `<span class="etq ${CLS_OR[v]}">${ETQ_OR_CORTA[v]}</span>`; }
+const entrada = id => CATALOGO.find(x=>x.id===id);
+const elCaso  = id => CASOS.find(x=>x.id===id);
+const casosDe = id => CASOS.filter(c=>c.entradas.indexOf(id)>-1);
+
+/* ============ CASOS EN PORTADA ============ */
+function marcaPago(c){
+  return c.material
+    ? `<span class="marca-pago pago">+ Material ${c.material.precio}</span>`
+    : "";
+}
+function pintarCasos(){
+  document.getElementById("contCasos").textContent =
+    String(CASOS.length).padStart(2,"0") + " REGISTROS";
+  document.getElementById("filaCasos").innerHTML = CASOS.map(c=>{
+    const tira=c.entradas.map(e=>`<div class="mini">${silueta(entrada(e),220)}</div>`).join("");
+    return `<button class="caso-card" onclick="abrirCaso('${c.id}')">
+      <div class="marca-fila">
+        <span class="meta">${c.id} · ${c.lugar} · ${c.fecha}</span>
+        ${marcaPago(c)}
+      </div>
+      <h3>${c.titulo}</h3>
+      <p class="txt">${c.relato[0]}</p>
+      <div class="tira">${tira}</div>
+      <div class="pie2"><span>${c.testigo||""}</span><span>Leer el caso →</span></div>
+    </button>`;
+  }).join("");
+}
+
+/* ============ CATÁLOGO ============ */
+const F={tipo:"",region:"",ev:"",origen:""};
+const CAMPOS=[
+  { k:"tipo",   etq:"Tipo",         todo:"Todos",  ops:[["entidad","Entidades"],["objeto","Objetos"]] },
+  { k:"region", etq:"Región",       todo:"Todas",  ops:null },
+  { k:"ev",     etq:"Verificación", todo:"Todas",  ops:[["caso_documentado","Documentado"],["testimonio","Testimonio"],["referencia","Referencia"]] },
+  { k:"origen", etq:"Imagen",       todo:"Todas",  ops:[["registro_original","Fotografía real"],["reconstruccion_ia","Reconstrucción IA"],["archivo_historico","Archivo histórico"]] }
+];
+function pintarChips(){
+  const regiones=[...new Set(CATALOGO.map(i=>i.region).filter(Boolean))].sort();
+  document.getElementById("filtros").innerHTML = CAMPOS.map(c=>{
+    const ops = c.ops || regiones.map(r=>[r,r]);
+    return `<div class="campo ${F[c.k]?"activo":""}">
+      <label for="f-${c.k}">${c.etq}</label>
+      <select id="f-${c.k}" onchange="setF('${c.k}',this.value)">
+        <option value="">${c.todo}</option>
+        ${ops.map(o=>`<option value="${o[0]}" ${F[c.k]===o[0]?"selected":""}>${o[1]}</option>`).join("")}
+      </select></div>`;
+  }).join("");
+  document.getElementById("btnLimpiar").hidden = !CAMPOS.some(c=>F[c.k]);
+}
+function setF(k,v){ F[k]=v; pintarChips(); pintarCatalogo(); }
+function limpiarFiltros(){
+  CAMPOS.forEach(c=>F[c.k]="");
+  document.getElementById("q").value="";
+  pintarChips(); pintarCatalogo();
+}
+
+function pintarCatalogo(){
+  const q=(document.getElementById("q").value||"").toLowerCase().trim();
+  const r=CATALOGO.filter(i=>{
+    if(F.tipo && i.tipo!==F.tipo) return false;
+    if(F.region && i.region!==F.region) return false;
+    if(F.ev && i.nivel_evidencia!==F.ev) return false;
+    if(F.origen && i.origen_visual!==F.origen) return false;
+    if(q && (i.nombre+" "+(i.region||"")).toLowerCase().indexOf(q)===-1) return false;
+    return true;
+  });
+  document.getElementById("conteo").textContent =
+    String(r.length).padStart(2,"0") + (r.length===CATALOGO.length ? " FICHAS" : " DE "+CATALOGO.length);
+  document.getElementById("conteoTexto").textContent =
+    r.length===CATALOGO.length ? `${r.length} fichas` : `${r.length} de ${CATALOGO.length} fichas`;
+  document.getElementById("vacio").hidden = r.length>0;
+  document.getElementById("grilla").innerHTML = r.map(i=>{
+    const n = casosDe(i.id).length;
+    return `<button class="tarjeta" onclick="abrirFicha('${i.id}')">
+      <div class="lienzo">${silueta(i)}
+        ${n?`<span class="marca-caso">${n} caso${n>1?"s":""}</span>`:""}
+      </div>
+      <div class="pie">
+        <p class="num">${i.tipo==="objeto"?"Objeto":"Entidad"} · ${i.region||""}</p>
+        <p class="nom">${i.nombre}</p>
+        <div class="etiquetas">${etqEv(i.nivel_evidencia)}${etqOr(i.origen_visual)}</div>
+      </div></button>`;
+  }).join("");
+}
+
+/* ============ VISTA CASO ============ */
+function abrirCaso(id, sinApilar){
+  const c=elCaso(id); if(!c) return;
+  if(!sinApilar && !volviendo) pila=[];   // desde la portada, la pila se limpia
+  document.getElementById("cNum").textContent = c.id + " · Caso";
+  document.getElementById("cTit").textContent = c.titulo;
+  document.getElementById("cEv").outerHTML = `<span id="cEv" class="etiquetas">${etqEv(c.nivel_evidencia)}${marcaPago(c)}</span>`;
+  const filas=[["Fecha",c.fecha],["Lugar",c.lugar],["Región",c.region],["Testigo",c.testigo],["Fuente",c.fuente]].filter(f=>f[1]);
+  document.getElementById("cDatos").innerHTML = filas.map(f=>`<div class="dato"><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join("");
+  document.getElementById("cProt").innerHTML = c.entradas.map(e=>{
+    const i=entrada(e); if(!i) return "";
+    return `<button class="prot" onclick="abrirFicha('${i.id}','${c.id}')">
+      <div class="l">${silueta(i)}</div>
+      <div class="n">${i.nombre}<span class="r">${i.tipo==="objeto"?"Objeto":"Entidad"}</span></div></button>`;
+  }).join("");
+  document.getElementById("cRelato").innerHTML = c.relato.map(p=>`<p>${p}</p>`).join("");
+  casoActual = c.id;
+  pintarMaterial(c);
+  mostrar("vCaso");
+}
+
+/* ============ VISTA FICHA ============ */
+function abrirFicha(id, desdeCaso){
+  const i=entrada(id); if(!i) return;
+  if(desdeCaso) pila.push({tipo:"caso", id:desdeCaso}); else pila=[];
+  const esReal = i.origen_visual==="registro_original";
+  document.getElementById("fImg").innerHTML = silueta(i,300) +
+    `<span class="etiqueta-origen ${esReal?"real":"ia"}">${ETQ_OR[i.origen_visual]}${esReal?"":" — basada en el testimonio"}</span>`;
+  document.getElementById("fNum").textContent = i.id + " · " + (i.tipo==="objeto"?"Objeto":"Entidad");
+  document.getElementById("fNom").textContent = i.nombre;
+  document.getElementById("fEv").outerHTML = `<span id="fEv" class="etiquetas">${etqEv(i.nivel_evidencia)}${etqOr(i.origen_visual)}</span>`;
+  const filas=[["Descripción",i.descripcion_fisica],["Origen declarado",i.origen],["Estatura",i.altura],["Región",i.region]].filter(f=>f[1]);
+  document.getElementById("fDatos").innerHTML = filas.map(f=>`<div class="dato"><dt>${f[0]}</dt><dd>${f[1]}</dd></div>`).join("");
+  const cs=casosDe(i.id);
+  document.getElementById("fCasosBloque").hidden = cs.length===0;
+  document.getElementById("fCasos").innerHTML = cs.map(c=>
+    `<button class="caso-link" onclick="abrirCaso('${c.id}')">
+      <p class="m">${c.lugar} · ${c.fecha} &nbsp; ${marcaPago(c)}</p>
+      <p class="t">${c.titulo}</p></button>`).join("");
+  mostrar("vFicha", desdeCaso ? "caso" : "catalogo");
+}
+
+/* ============ ACCESO POR ENLACE ============
+   En la web real, ACCESOS vive en la base de datos: código, correo y caso.
+   Aquí se simula en memoria para ver el recorrido completo.
+=========================================== */
+const ACCESOS = [];          // {codigo, correo, caso}
+let casoActual = null, metodo = "yape";
+
+function codigoNuevo(){
+  return Math.random().toString(36).slice(2,10);
+}
+function accesoValido(idCaso){
+  const p = new URLSearchParams(location.search).get("acceso");
+  const enMemoria = ACCESOS.find(a=>a.caso===idCaso && a.codigo===codigoEnUso);
+  if(enMemoria) return enMemoria;
+  return ACCESOS.find(a=>a.caso===idCaso && a.codigo===p) || null;
+}
+let codigoEnUso = null;
+
+function abrirPago(){
+  const c = elCaso(casoActual); if(!c || !c.material) return;
+  document.getElementById("pTitulo").textContent = "Material de campo — " + c.titulo;
+  document.getElementById("pPrecio").textContent = c.material.precio;
+  document.getElementById("pasoCorreo").hidden = false;
+  document.getElementById("pasoListo").hidden = true;
+  document.getElementById("capaPago").hidden = false;
+}
+function cerrarPago(){ document.getElementById("capaPago").hidden = true; }
+function elegirMetodo(m){
+  metodo = m;
+  document.querySelectorAll(".metodo").forEach(b=>b.setAttribute("aria-pressed", b.dataset.m===m));
+}
+function pagar(){
+  const correo = document.getElementById("pCorreo").value.trim();
+  if(correo.indexOf("@")===-1){ alert("Escribe un correo válido para enviarte el acceso."); return; }
+  const c = elCaso(casoActual);
+  const codigo = codigoNuevo();
+  ACCESOS.push({ codigo, correo, caso: c.id });   // esto iría a la base de datos
+  codigoEnUso = codigo;
+  document.getElementById("lCorreo").textContent = correo;
+  document.getElementById("lAsunto").textContent = "Tu acceso: " + c.titulo;
+  document.getElementById("lEnlace").textContent =
+    location.origin + location.pathname + "?caso=" + c.id + "&acceso=" + codigo;
+  document.getElementById("pasoCorreo").hidden = true;
+  document.getElementById("pasoListo").hidden = false;
+}
+function usarEnlace(){
+  cerrarPago();
+  abrirCaso(casoActual, true);
+  document.getElementById("cDesbloqueado").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function pintarMaterial(c){
+  const cerrado = document.getElementById("cMaterial");
+  const abierto = document.getElementById("cDesbloqueado");
+  if(!c.material){ cerrado.hidden=true; abierto.hidden=true; return; }
+  const acc = accesoValido(c.id);
+  if(acc){
+    cerrado.hidden = true; abierto.hidden = false;
+    document.getElementById("dCorreo").textContent = "Acceso de " + acc.correo;
+    if(c.material.transcripcion || c.material.fotos){
+      pintarLector(c);
+    }
+  } else {
+    cerrado.hidden = false; abierto.hidden = true;
+    document.getElementById("cIncluye").innerHTML = c.material.incluye.map(x=>`<li><span>·</span>${x}</li>`).join("");
+    document.getElementById("cPrecio").textContent = c.material.precio;
+  }
+}
+
+/* ============ LECTOR DEL MATERIAL ============ */
+let audioT=0, audioDur=0, audioCorre=false, audioTimer=null, bloquesPlanos=[], fotosActuales=[], fotoIdx=0;
+
+function mmss(s){ const m=Math.floor(s/60), r=Math.floor(s%60); return m+":"+(r<10?"0":"")+r; }
+
+function pintarLector(c){
+  const mat=c.material;
+  // pestañas
+  const pes=[];
+  if(mat.transcripcion) pes.push({k:"entrevista",t:"Entrevista"});
+  if(mat.fotos) pes.push({k:"fotos",t:`Imágenes (${mat.fotos.length})`});
+  document.getElementById("dPestanas").innerHTML = pes.map((p,n)=>
+    `<button role="tab" aria-selected="${n===0}" onclick="verPanel('${p.k}')">${p.t}</button>`).join("");
+
+  // audio
+  audioDur = mat.audio ? mat.audio.duracion : 0;
+  audioT=0; pararAudio();
+  document.getElementById("tTotal").textContent = mmss(audioDur);
+  document.getElementById("etqAudio").textContent = mat.audio ? mat.audio.etiqueta : "";
+  document.getElementById("reproductor").hidden = !mat.audio;
+
+  // transcripción
+  bloquesPlanos=[];
+  let html="";
+  (mat.transcripcion||[]).forEach((sec,si)=>{
+    html += `<h4 id="sec-${si}">${sec.seccion}</h4>`;
+    sec.bloques.forEach(b=>{
+      const i=bloquesPlanos.length;
+      bloquesPlanos.push(b);
+      html += `<button class="bloque ${b.quien==="Testigo"?"testigo":"investigador"}" id="blq-${i}" onclick="irA(${b.t})">
+        <span class="quien">${b.quien}<i>${mmss(b.t)}</i></span><p>${b.txt}</p></button>`;
+    });
+  });
+  document.getElementById("dTranscripcion").innerHTML = html;
+  document.getElementById("dSecciones").innerHTML = (mat.transcripcion||[]).map((s,si)=>
+    `<button onclick="verSeccion(${si})">${s.seccion}</button>`).join("");
+
+  // fotos
+  fotosActuales = mat.fotos||[];
+  document.getElementById("dFotos").innerHTML = fotosActuales.map((f,n)=>
+    `<button class="foto-cel" onclick="abrirVisor(${n})">
+      <div class="lz">${lienzoFoto(f)}</div>
+      <div class="nb">${f.nombre}</div></button>`).join("");
+
+  verPanel("entrevista");
+  marcarBloque();
+}
+
+function lienzoFoto(f){
+  const c="#6FA8C7";
+  let d="";
+  switch(f.forma){
+    case "circulo": d=`<ellipse cx="100" cy="90" rx="52" ry="22" fill="none" stroke="${c}" stroke-opacity=".5" stroke-width="2" stroke-dasharray="7 5"/><path d="M20 118 H180" stroke="${c}" stroke-opacity=".25"/>`; break;
+    case "cerro": d=`<path d="M10 120 L60 62 L100 96 L140 55 L190 120 Z" fill="${c}" fill-opacity=".22"/><circle cx="145" cy="42" r="10" fill="${c}" fill-opacity=".45"/>`; break;
+    case "croquis": d=`<rect x="38" y="40" width="124" height="76" fill="none" stroke="${c}" stroke-opacity=".5" stroke-dasharray="4 4"/><path d="M38 88 H162 M92 40 V116" stroke="${c}" stroke-opacity=".35"/><circle cx="120" cy="66" r="9" fill="${c}" fill-opacity=".4"/>`; break;
+    default: d=`<path d="M20 116 H180 M52 116 V72 H92 V116" stroke="${c}" stroke-opacity=".4" fill="none" stroke-width="2"/><path d="M120 116 V84 H164 V116" stroke="${c}" stroke-opacity=".3" fill="none" stroke-width="2"/>`;
+  }
+  return `<svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${f.nombre}">
+    <rect width="200" height="140" fill="#0F141B"/>${d}</svg>`;
+}
+
+function verPanel(k){
+  document.getElementById("panelEntrevista").hidden = k!=="entrevista";
+  document.getElementById("panelFotos").hidden = k!=="fotos";
+  document.querySelectorAll("#dPestanas button").forEach(b=>
+    b.setAttribute("aria-selected", b.textContent.toLowerCase().indexOf(k==="fotos"?"imágenes":"entrevista")===0));
+}
+function verSeccion(si){
+  const h=document.getElementById("sec-"+si);
+  if(h) h.scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelectorAll("#dSecciones button").forEach((b,n)=>b.setAttribute("aria-current", n===si));
+}
+
+/* audio simulado: en la web real esto es un <audio> con su timeupdate */
+function alternarAudio(){ audioCorre ? pararAudio() : correrAudio(); }
+function correrAudio(){
+  if(!audioDur) return;
+  audioCorre=true; document.getElementById("btnPlay").textContent="❚❚";
+  audioTimer=setInterval(()=>{
+    audioT++; if(audioT>=audioDur){ audioT=audioDur; pararAudio(); }
+    refrescarAudio();
+  },1000);
+}
+function pararAudio(){
+  audioCorre=false; clearInterval(audioTimer);
+  const b=document.getElementById("btnPlay"); if(b) b.textContent="▶";
+}
+function irA(t){ audioT=t; refrescarAudio(); if(!audioCorre) correrAudio(); }
+function saltarAudio(e){
+  const l=document.getElementById("linAudio"), r=l.getBoundingClientRect();
+  audioT=Math.round((e.clientX-r.left)/r.width*audioDur); refrescarAudio();
+}
+function refrescarAudio(){
+  document.getElementById("avance").style.width=(audioDur?audioT/audioDur*100:0)+"%";
+  document.getElementById("tActual").textContent=mmss(audioT);
+  marcarBloque();
+}
+function marcarBloque(){
+  let act=-1;
+  bloquesPlanos.forEach((b,i)=>{ if(audioT>=b.t) act=i; });
+  bloquesPlanos.forEach((b,i)=>{
+    const el=document.getElementById("blq-"+i);
+    if(el) el.classList.toggle("sonando", i===act);
+  });
+}
+
+/* visor de imágenes */
+function abrirVisor(n){ fotoIdx=n; pintarVisor(); document.getElementById("capaVisor").hidden=false; }
+function cerrarVisor(){ document.getElementById("capaVisor").hidden=true; }
+function moverVisor(d){ fotoIdx=Math.min(fotosActuales.length-1,Math.max(0,fotoIdx+d)); pintarVisor(); }
+function pintarVisor(){
+  const f=fotosActuales[fotoIdx]; if(!f) return;
+  document.getElementById("vLienzo").innerHTML=lienzoFoto(f);
+  document.getElementById("vNombre").textContent=f.nombre;
+  document.getElementById("vNota").textContent=f.nota||"";
+  document.getElementById("vPos").textContent=(fotoIdx+1)+" de "+fotosActuales.length;
+  document.querySelectorAll(".v-nav button")[0].disabled = fotoIdx===0;
+  document.querySelectorAll(".v-nav button")[1].disabled = fotoIdx===fotosActuales.length-1;
+}
+
+/* ============ NAVEGACIÓN ============ */
+let pila = [];            // de dónde vengo, para volver bien
+let volviendo = false;    // evita apilar cuando el retroceso lo dispara el navegador
+
+function mostrar(id, origen){
+  ["vPortada","vCaso","vFicha"].forEach(v=>{
+    document.getElementById(v).classList.toggle("activa", v===id);
+  });
+  document.getElementById("barraTop").classList.toggle("oculta", id!=="vPortada");
+  // el volver de la ficha dice a dónde regresa
+  const txt = origen==="caso" ? "← Volver al caso" : "← Volver al catálogo";
+  const b1=document.getElementById("fVolver"), b2=document.getElementById("fVolverPie");
+  if(b1) b1.textContent=txt; if(b2) b2.textContent=txt;
+  if(!volviendo && id!=="vPortada"){
+    history.pushState({vista:id}, "");
+  }
+  window.scrollTo(0,0);
+}
+function cerrar(){
+  const previo = pila.pop();
+  volviendo = true;
+  if(previo && previo.tipo==="caso"){ abrirCaso(previo.id, true); }
+  else { pila=[]; mostrar("vPortada"); }
+  volviendo = false;
+}
+addEventListener("popstate", function(){ volviendo=true; cerrar(); volviendo=false; });
+function ir(d){
+  const m={casos:"secCasos", catalogo:"secCatalogo", metodo:"secMetodo"};
+  const el=document.getElementById(m[d]||"secCasos");
+  if(document.getElementById("vPortada").classList.contains("activa")){
+    el.scrollIntoView({behavior:"smooth"});
+  } else { cerrar(); setTimeout(()=>el.scrollIntoView({behavior:"smooth"}),60); }
+}
+function suscribir(inp,ok){
+  const v=document.getElementById(inp).value.trim();
+  if(v.indexOf("@")===-1){ alert("Escribe un correo válido."); return; }
+  document.getElementById(inp).value="";
+  document.getElementById(ok).hidden=false;
+}
+
+/* ============ CIELO ============ */
+(function(){
+  const cv=document.getElementById("heroLienzo"); if(!cv) return;
+  const ctx=cv.getContext("2d");
+  const quieto=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w,h,es=[];
+  function medir(){
+    w=cv.width=cv.offsetWidth*devicePixelRatio; h=cv.height=cv.offsetHeight*devicePixelRatio;
+    es=Array.from({length:110},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.3*devicePixelRatio+.3,f:Math.random()*6.28,v:.006+Math.random()*.012}));
+  }
+  function dib(){
+    ctx.clearRect(0,0,w,h);
+    const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,"#1A2331"); g.addColorStop(1,"#131820");
+    ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+    es.forEach(s=>{ const a=quieto?.5:.28+Math.sin(s.f)*.26;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,7); ctx.fillStyle="rgba(222,154,76,"+a+")"; ctx.fill(); s.f+=s.v; });
+    if(!quieto) requestAnimationFrame(dib);
+  }
+  medir(); dib(); addEventListener("resize",function(){ medir(); if(quieto) dib(); });
+})();
+
+/* Figura del hero: marcador de la imagen real que dará el cliente */
+(function(){
+  const cont=document.getElementById("heroFigura"); if(!cont) return;
+  cont.innerHTML = `<svg viewBox="0 0 260 460" preserveAspectRatio="xMidYMax meet" style="height:100%;width:auto" aria-hidden="true">
+    <defs>
+      <linearGradient id="figG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#DE9A4C" stop-opacity=".62"/>
+        <stop offset="72%" stop-color="#DE9A4C" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="#DE9A4C" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="halo" cx="50%" cy="24%" r="52%">
+        <stop offset="0%" stop-color="#DE9A4C" stop-opacity=".2"/>
+        <stop offset="100%" stop-color="#DE9A4C" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="260" height="460" fill="url(#halo)"/>
+    <g fill="url(#figG)">
+      <ellipse cx="130" cy="86" rx="34" ry="52"/>
+      <path d="M130 138 C104 176 96 254 104 380 L156 380 C164 254 156 176 130 138Z"/>
+      <path d="M106 168 C74 208 66 296 70 372 L86 372 C82 296 88 210 112 176Z"/>
+      <path d="M154 168 C186 208 194 296 190 372 L174 372 C178 296 172 210 148 176Z"/>
+    </g>
+  </svg>`;
+})();
+
+document.getElementById("anio").textContent=new Date().getFullYear();
+pintarChips(); pintarCatalogo(); pintarCasos();
+
+/* Si alguien llega con un enlace de acceso, se abre el caso ya desbloqueado */
+(function entradaPorEnlace(){
+  const p = new URLSearchParams(location.search);
+  const idCaso = p.get("caso"), cod = p.get("acceso");
+  if(idCaso && cod && elCaso(idCaso)){
+    ACCESOS.push({ codigo: cod, correo: "tu correo", caso: idCaso });
+    codigoEnUso = cod;
+    abrirCaso(idCaso, true);
+  }
+})();
+</script>
+</body>
+</html>
